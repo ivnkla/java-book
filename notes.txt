@@ -1,0 +1,2 @@
+scanner.nextInt() laisse un '\n' dans le buffer ce qui crée une erreur sur la prochaine lecture qui va prendre ce retour à la ligne comme entrée. Ne pas oublier donc de libérer le buffer avec scanner.nextLine.
+Privilégier un seul scanner pour tout le fichier, et passer celui en argument car une fois un scanner fermé, les autres lectures vont échouer.
