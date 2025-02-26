@@ -11,10 +11,10 @@ public class Account {
 
     private void create(Scanner scanner){
         //type
-        System.out.println("Type du compte [Types possibles : courant, joint, épargne] :");
+        System.out.println("Type du compte [Types possibles : courant, joint, épargne] : ");
         String type = scanner.nextLine();
         this.savings = false;
-        switch(type) {
+        switch (type) {
             case "courant" :
                 this.type = "courant";
                 break;
@@ -28,7 +28,7 @@ public class Account {
             default :
                 System.err.println("Choississez un type de compte figurant dans la liste.");
                 break;
-        }
+            }
         //account number 
         System.out.println("Numéro du compte : ");
         Integer id = scanner.nextInt();
@@ -41,10 +41,11 @@ public class Account {
 
         //savings rate
         if (this.savings) {
-            System.out.println("Taux de placement (compte épargne) : ");
+            System.out.print("Taux de placement (compte épargne) : ");
             Integer rate = scanner.nextInt();
             this.rate = rate;
         }
+        System.out.print("Compte crée avec succès !'\n\n'");
     }
 
     private void display() {
@@ -56,26 +57,39 @@ public class Account {
         System.out.println("premier dépoôt : " + this.first_dep);
     }
 
-    public static void main (String [] args) {
+    public static Integer menuPrincipal(Scanner sc)
+    {
+        System.out.println("\n");
+        System.out.println("1. Créer un compte");
+        System.err.println("2. Afficher un compte");
+        System.err.println("3. Créer une ligne comptable");
+        System.err.println("4. Sortir");
+        System.err.println("5. De l'aide");
+        System.out.println("\n");
 
+        Integer lu = sc.nextInt();
+        sc.nextLine();
+
+        return lu;
+
+    }
+
+    public static void main (String [] args) {
         Map<Integer, Account> accounts = new HashMap<>();
 
         
         Scanner scanner = new Scanner(System.in);
-        Integer lu;
+       
         
         //Menu
         while(true) {
-            System.out.println("1. Créer un compte");
-            System.err.println("2. Afficher un compte");
-            System.err.println("3. Créer une ligne comptable");
-            System.err.println("4. Sortir");
-            System.err.println("5. De l'aide");
+            
 
-            lu = scanner.nextInt();
-            scanner.nextLine();
+            
 
-            switch (lu) {
+            Integer option = Account.menuPrincipal(scanner);
+
+            switch (option) {
                 case 1:
                     Account account = new Account();
                     account.create(scanner);
@@ -83,7 +97,7 @@ public class Account {
                     scanner.nextLine();
                     break;
                 case 2:
-                    System.out.println("Saisissez un numéro de compte");
+                    System.out.println("Saisissez un numéro de compte valide");
                     Integer id = scanner.nextInt();
                     if (accounts.containsKey(id)){
                         accounts.get(id).display();
@@ -92,12 +106,24 @@ public class Account {
                     }
                     break;
                 case 3:
-
+                    System.out.println("Option non programmée");
                     break;
                 case 4:
-                    return;
+                    System.exit(0);
                 case 5:
-
+                    System.out.println("1. permet d'ajouter un compte bancaire");
+                    System.err.println("2. affiche les inforamtions liées à un compte bancaire existant");
+                    System.err.println("3. permet d'ajouter une transaction entre deux comptes");
+                    System.err.println("4. quitte le logiciel de gestion");
+                    System.err.println("5. affiche ce panneau d'aide");
+                    System.out.println();
+                    Boolean quit = false;
+                    do {
+                        System.out.println("Tapez 'q' pour quitter l'aide : ");
+                        if ("q".equals(scanner.nextLine())) {
+                            quit = true;
+                        }
+                    } while (!quit) ;
                     break;
                 default:
                     System.out.println("Veuillez choisir une option valide");
