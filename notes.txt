@@ -3,3 +3,7 @@ Privilégier un seul scanner pour tout le fichier, et passer celui en argument c
 
 if ((temp = scanner.nextLine()) == "q") : l'opérateur '==' vérifie si les deux objets pointent au même endroit
 Utiliser if ((temp = scanner.nextLine()).equals("q")) ou if ("q".equals(temp = scanner.nextLine()))
+
+Considérons cette déclaration : s = "exemple" . s n'est pas une variable mais un objet, car elle contient l'adresse qui pointe vers l'information.
+
+Convention : nom d'une méthode commence par une minuscule & nom d'une classe par une majuscule
