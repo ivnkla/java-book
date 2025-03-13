@@ -7,3 +7,27 @@ Utiliser if ((temp = scanner.nextLine()).equals("q")) ou if ("q".equals(temp = s
 Considérons cette déclaration : s = "exemple" . s n'est pas une variable mais un objet, car elle contient l'adresse qui pointe vers l'information.
 
 Convention : nom d'une méthode commence par une minuscule & nom d'une classe par une majuscule
+
+Dans une classe, on peut définir des variables d'instances et des variables de classes (static). La variable de classe garde sa valeur.
+
+La convention veut que ce soit la variable locale qui soit mise à jour en cas d'homonyme avec une variable de classe.
+
+La protection des données : public : les membres (données et méthodes) d'une classe sont accessible par toute l'app.
+                            private : accessible que pour les méthodes de la même classe.
+                            protected : private + accessible par fct d'une sous-classe.
+Par défaut : en public.
+
+On utilise les modes d'accès en consultation et en modification afin d'assurer la sécurité des données. 
+
+Convention : méthode qui consultent commencent par get, méthodes qui modifient commencent par set.
+
+On peut déclarer les constantes avec le mot clé "final"     -> public final int TailleEcran = 600; La variable est visible par l'app.
+                                                            -> public final static 
+
+Les méthodes d'implémentations ou méthodes métier sont des méthodes définies comme privées à l'intérieur d'une classe.
+
+Quand deux méthodes portent le même nom on dit qu'elles sont surchargées.
+
+Un constructeur est comme une fonction excepté qu'il ne retourne aucune valeur. On peut ensuite l'appeler avec l'opérateur new.
+
+Checker si une valeur est d'un certain type : valeur isinstance type

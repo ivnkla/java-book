@@ -1,23 +1,22 @@
 import java.util.Scanner;
 
 public class LigneComptable {
-   Compte compte;
-   Double montant;
-   String date;
-   String motif;
-   String mode;
+   private Double montant;
+   private String date;
+   private String motif;
+   private String mode;
 
 
-   public void creerLigneComptable(Scanner sc)
+   public void creerLigneComptable()
    {
-        System.out.println("Somme à débiter (ou créditer) : ");
-        this.montant = Double.parseDouble(sc.nextLine());
-        System.out.println("Date de l'opération : ");
-        this.date = sc.nextLine();
-        System.out.println("Motif [Salire, Loyer, Alimentation, Divers] :");
-        this.motif = sc.nextLine();
-        System.out.println("Mode de paiement [CB, n° de Chèque, Virement] : ");
-        this.mode = sc.nextLine();
+     Scanner sc = new Scanner(System.in);
+     System.out.println("Somme à débiter (ou créditer) : ");
+     this.montant = Double.parseDouble(sc.nextLine());
+     System.out.println("Date de l'opération : ");
+     this.date = sc.nextLine();
+     System.out.println("Motif [Salire, Loyer, Alimentation, Divers] :");
+     this.motif = sc.nextLine();
+     this.mode = controleMode();
    }
    
    public void afficherLigne()
@@ -27,6 +26,36 @@ public class LigneComptable {
                             " selon le motif " + getMotif() +
                             " par " + getMode());
    }
+
+   private String controleMode()
+     {
+     char tmpm;
+     String tmpS = "Carte bancaire";
+     Scanner sc = new Scanner(System.in);
+     do {
+          System.out.println("Mode de paiement [C(arte bancaire), N(° de chèque), V(irement)] : ");
+          tmpm = sc.next().charAt(0);
+     } while (tmpm!='C' && tmpm!='J' && tmpm!='E');
+     switch(tmpm)
+     {
+          case 'C':
+               tmpS = "Carte bancaire";
+               break;
+          case 'N':
+               String tmpN;
+               do 
+               {
+                    System.out.println("Saisissez le n° de chèque : ");
+                    tmpN = sc.nextLine();
+               } while (!(Integer.parseInt(tmpS) instanceof Integer));
+               tmpS = tmpN;
+               break;
+          case 'V':
+               tmpS = "Virement";
+               break;
+     }
+     return tmpS;
+     }
 
    public Double getMontant()
    {

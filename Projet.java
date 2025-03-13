@@ -3,9 +3,11 @@
 import java.util.Scanner;
 
 public class Projet {
-    public static Integer menuPrincipal(Scanner sc)
+    //static Scanner sc = new Scanner(System.in);
+    public static Integer menuPrincipal()
     {
         System.out.println("Quelle action désirez vous effectuer ? (5 pour obtenir l'aide)");
+        Scanner sc = new Scanner(System.in);
         Integer lu = sc.nextInt();
         sc.nextLine();
         return lu;
@@ -28,20 +30,19 @@ public class Projet {
     }
     public static void main (String [] args) {
         //Map<Integer, Projet> accounts = new HashMap<>();
-        Scanner scanner = new Scanner(System.in);
         Compte c = new Compte();
 
         while(true) {
-            Integer option = Projet.menuPrincipal(scanner);
+            Integer option = Projet.menuPrincipal();
             switch (option) {
                 case 1:
-                    c.creerCpte(scanner);
+                    c.creerCpte();
                     break;
                 case 2:
                     c.afficherCpte();
                     break;
                 case 3:
-                    c.creerLigne(scanner);
+                    c.creerLigne();
                     break;
                 case 4:
                     sortir();
@@ -54,5 +55,5 @@ public class Projet {
                     break;
             }
         }
-    }
+    } 
 }
